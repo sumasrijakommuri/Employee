@@ -22,8 +22,8 @@ public class EmployeeRepositoryImplementation implements EmployeeRepository {
         return query.getResultList();
     }
 
-    public Employee getOne(String email) {
-        return entityManager.find(Employee.class,email);
+    public Employee getOne(String empId) {
+        return entityManager.find(Employee.class,empId);
     }
 
     public Employee create(Employee employee) {
@@ -47,6 +47,18 @@ public class EmployeeRepositoryImplementation implements EmployeeRepository {
         Address address = employee.getAddress();
         entityManager.remove(employee);
         entityManager.remove(address);
+    }
+
+    public Employee finByEmail(String email) {
+        TypedQuery<Employee> query = entityManager.createNamedQuery("Employee.findByEmail",Employee.class);
+        query.setParameter("paramEmail",email);
+        List<Employee> result= query.getResultList();
+        if(result.size()==1)
+        {
+            return result.get(0);
+        }
+        else
+            return null;
     }
 
 

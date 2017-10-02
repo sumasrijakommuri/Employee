@@ -21,18 +21,18 @@ public class EmployeeServiceImplementation implements EmployeeService {
         return repository.getAll();
     }
     @Transactional(readOnly =true)
-    public Employee getOne(String email) {
-        Employee exists = repository.getOne(email);
+    public Employee getOne(String empId) {
+        Employee exists = repository.getOne(empId);
         if(exists==null)
         {
-            throw new BadRequestException("Employee with email "+email+ " does not exist.");
+            throw new BadRequestException("Employee does not exist.");
         }
         return exists;
     }
 
     @Transactional
     public Employee create(Employee employee) {
-        Employee exists = repository.getOne(employee.getEmail());
+        Employee exists = repository.finByEmail(employee.getEmail());
 
         if(exists != null)
         {
@@ -43,16 +43,25 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Transactional
     public Employee update(Employee employee) {
+        Employee exists= repository.finByEmail(employee.getEmail());
+        if(exists != null){
+            throw new BadRequestException("Employee with email "+employee.getEmail()+" already exists.");
+        }
         return repository.update(employee);
     }
 
     @Transactional
-    public void delete(String email) {
-        Employee exists = repository.getOne(email);
+    public void delete(String empId) {
+        Employee exists = repository.getOne(empId);
         if(exists==null)
         {
-            throw new ResourceNotFoundException("The employee with email "+email +" does not exist.");
+            throw new ResourceNotFoundException("The employee with email "+empId +" does not exist.");
         }
         repository.delete(exists);
     }
+    @Transactional
+    public Employee findByEmail(String email){
+        return repository.finByEmail(email);
+    }
+
 }

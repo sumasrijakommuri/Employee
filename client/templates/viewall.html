@@ -1,0 +1,41 @@
+<div ng-controller="EmployeeController as employeeVm">
+
+    <br>
+    <br>
+    <div class="container">
+        <section>
+            <div class="page-header" id="list">
+                <h1 class="success">List of Employees</h1>
+            </div>
+        </section>
+    </div>
+
+    <div align="center" >
+        <div class="main-center" style="max-width: 80%; height: 400px; margin: 0 auto">
+            <table class="table" >
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Zip Code</th>
+                    <th>Actions</th>
+                </tr>
+
+                <tr ng-repeat="employee in employeeVm.employees">
+                    <td>{{employee.firstName+ " " +employee.lastName}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.address.streetAddress1+" "+employee.address.streetAddress2}}</td>
+                    <td>{{employee.address.city}}</td>
+                    <td>{{employee.address.zipCode}}</td>
+                    <td><button class="btn btn-primary btn-sm" type="button" ng-click="editemp(employee);">Edit</button>
+                        <button class="btn btn-primary btn-sm" type="button" ng-click="delete(employee)">Delete</button> </td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>

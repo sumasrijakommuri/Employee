@@ -7,26 +7,30 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+
 </head>
-<body>
+<body ng-app="employeeApp">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
 
 
         <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
             <a href="#" class="navbar-brand">Computech Employees</a>
         </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right" >
+               <li><a href="#!/addemployee">Add</a></li>
+            </ul>
 
-
+        </div>
     </div>
 </nav>
+
+<div ng-view></div>
+
+<script src="app.js"></script>
+<script src="controllers/employeeController.js"></script>
+<script src="services/employeeService.js"></script>
 </body>
 </html>

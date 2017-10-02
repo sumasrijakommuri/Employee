@@ -1,14 +1,19 @@
 package com.computech.Entity;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@NamedQueries(
-        @NamedQuery(name="Employee.getAll",query= "select employee FROM Employee employee")
+@NamedQueries({
+        @NamedQuery(name="Employee.getAll",query= "select employee FROM Employee employee"),
+        @NamedQuery(name = "Employee.findByEmail", query = "select employee from Employee employee where employee.email=:paramEmail")}
 )
 public class Employee {
 
     @Id
+    private String empId;
+
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String firstName;
@@ -17,6 +22,18 @@ public class Employee {
 
     @OneToOne
     private Address address;
+
+    public Employee(){
+        empId = UUID.randomUUID().toString();
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -49,6 +66,5 @@ public class Employee {
     public void setAddress(Address address) {
         this.address = address;
     }
-
 
 }

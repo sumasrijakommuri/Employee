@@ -22,8 +22,8 @@ public class EmployeeController {
     }
 
     @RequestMapping(method = RequestMethod.GET,path="/employees/{id}",produces = APPLICATION_JSON_UTF8_VALUE)
-    public Employee getOne(@PathVariable("id") String email){
-        return service.getOne(email);
+    public Employee getOne(@PathVariable("id") String empId){
+        return service.getOne(empId);
     }
 
     @RequestMapping(method = RequestMethod.POST, path="/employees", consumes = APPLICATION_JSON_UTF8_VALUE, produces = APPLICATION_JSON_UTF8_VALUE)
@@ -39,8 +39,8 @@ public class EmployeeController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path="/employees/{id}")
-    public void delete(@PathVariable("id") String email)
+    public void delete(@PathVariable("id") String empId)
     {
-        service.delete(email);
+        service.delete(empId);
     }
 }

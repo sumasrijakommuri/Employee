@@ -13,6 +13,7 @@ public class Address {
     private String streetAddress1;
     private String streetAddress2;
 
+    private String city;
     private String state;
     private String country;
 
@@ -26,6 +27,13 @@ public class Address {
         return addressId;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public void setAddressId(String addressId) {
         this.addressId = addressId;
