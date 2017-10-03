@@ -53,17 +53,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     @Transactional
     public Employee update(Employee employee) {
-        Employee exists= repository.finByEmail(employee.getEmail());
-        if(exists != null){
-            throw new BadRequestException("Employee with email "+employee.getEmail()+" already exists.");
-        }
-        else{
+
             boolean valid = emailValidator.validate(employee.getEmail());
             if(!valid)
             {
                 throw new BadRequestException("Email address provided is not valid.");
             }
-        }
+
         return repository.update(employee);
     }
 

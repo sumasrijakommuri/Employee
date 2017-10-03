@@ -21,7 +21,7 @@
 
         //Ng-click add 
         $scope.add = function () {
-            console.log("Testing add!");
+            //console.log("Testing add!");
             var data = {
                 "email": document.getElementsByName("email")[0].value,
                 "firstName": document.getElementsByName("firstName")[0].value,
@@ -49,21 +49,10 @@
 
 
         //ng-click edit
-        $scope.editemp = function (empId) {
-            var currentid = $routeParams.id;
+        $scope.editemp = function (employee) {
 
-           console.log(empId);
-            EmployeeService.getEmployee(empId)
-                .then(function (response) {
-                    console.log("Success!");
-                    EmployeeVm.currentEmployee= response.data;
-                    console.log(EmployeeVm.currentEmployee);
-                    window.location.href = "#!/editemployee";
-                    console.log("After relocation")
-                    console.log(EmployeeVm.currentEmployee);
-                }, function (error) {
-                    console.log("Error!");
-                })
+            EmployeeService.share(employee);
+            window.location.href="#!/editemployee";
         };
 
         //ng-click delete
@@ -76,7 +65,24 @@
             else {
                 console.log("Cancelled");
             }
-            ;
-        }
+
+        };
+
+        //ng-click weather
+        $scope.weather = function (employee) {
+            console.log(employee.address.city);
+            console.log(employee.address.state);
+                EmployeeService.getWeather(employee.address.city,employee.address.state)
+                    .then(function (response){
+                    console.log(response.data);
+            },function (error) {
+                        console.log("Error!");
+                    })
+        };
+
+        $scope.view = function (employee) {
+            EmployeeService.share(employee);
+          window.location.href="#!/viewemployee";
+        };
     }
 })();
