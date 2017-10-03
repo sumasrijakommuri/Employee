@@ -1,5 +1,6 @@
 package com.computech.Service;
 
+import com.computech.EmailValidator;
 import com.computech.Entity.Employee;
 import com.computech.Exceptions.BadRequestException;
 import com.computech.Exceptions.ResourceNotFoundException;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @Service
 public class EmployeeServiceImplementation implements EmployeeService {
+
+    EmailValidator emailValidator = new EmailValidator();
 
     @Autowired
     EmployeeRepository repository;
@@ -38,6 +41,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
         {
             throw new BadRequestException("Employee with email "+employee.getEmail()+" already exists.");
         }
+        else{
+           boolean valid = emailValidator.validate(employee.getEmail());
+           if(!valid)
+           {
+               throw new BadRequestException("Email address provided is not valid.");
+           }
+        }
         return repository.create(employee);
     }
 
@@ -46,6 +56,13 @@ public class EmployeeServiceImplementation implements EmployeeService {
         Employee exists= repository.finByEmail(employee.getEmail());
         if(exists != null){
             throw new BadRequestException("Employee with email "+employee.getEmail()+" already exists.");
+        }
+        else{
+            boolean valid = emailValidator.validate(employee.getEmail());
+            if(!valid)
+            {
+                throw new BadRequestException("Email address provided is not valid.");
+            }
         }
         return repository.update(employee);
     }

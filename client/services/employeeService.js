@@ -17,6 +17,16 @@
                     return $q.reject(error);
                 });
         };
+
+        self.getEmployee = function (id) {
+            return $http.get("http://localhost:8080/api/employees/"+id)
+                .then(function (response) {
+                    return response;
+                },
+                    function (error) {
+                        return $q.reject(error)
+                    });
+        };
         
         self.createEmployee = function (data) {
             var config =  {

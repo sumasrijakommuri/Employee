@@ -4,20 +4,20 @@
 
 
     <div align="center">
-        <form>
-            <h4> Personal Details</h4>
-            First Name: <input type="text" class="input-sm" name="firstName">{{employeeVm.firstName}}<br>
-            Last Name: <input type="text" class="input-sm" name="lastName"><br>
-            E-mail: <input type="email" class="input-sm" name="email"><br>
+        <form  ng-click="save()">
+            <h4> Personal Details{{employeeVm.currentEmployee.firstName}}</h4>
+            First Name: <input type="text" class="input-sm" required name="firstName"><br>
+            Last Name: <input type="text" class="input-sm" required name="lastName"><br>
+            E-mail: <input type="email"  class="input-sm" required aria-describedby="emailHelp" name="email"><br>
             <h4> Address</h4>
-            Street Address 1: <input type="text" class="input-sm" name="address1"><br>
-            Street Address 2: <input type="text" class="input-sm" name="address2"><br>
-            City: <input type="text" class="input-sm" name="city"><br>
-            State: <input type="text" class="input-sm" name="state"><br>
-            Country: <input type="text" class="input-sm" name="country"><br>
-            Zip Code: <input type="text" class ="input-sm" name="zipCode"><br><br>
+            Street Address 1: <input type="text" class="input-sm" required  name="address1"><br>
+            Street Address 2: <input type="text" class="input-sm"  name="address2"><br>
+            City: <input type="text" class="input-sm" required name="city"><br>
+            State: <input type="text" class="input-sm" required name="state"><br>
+            Country: <input type="text" class="input-sm" required name="country"><br>
+            Zip Code: <input type="number" class="input-sm" required name="zipCode"><br><br>
 
-            <button type="button" ng-click="save()">Save</button>
+            <button type="submit">Save</button>
             <button type="reset">Reset</button>
         </form>
     </div>
