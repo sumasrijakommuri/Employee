@@ -84,5 +84,16 @@
             return $http(config);
         };
 
+
+        self.getLatLong = function(address){
+            var config =  {
+                method: "GET",
+                url:'http://maps.google.com/maps/api/geocode/json?address='+address+'&sensor=false',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            };
+            return $http(config);
+        }
     }
 })();

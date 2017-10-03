@@ -21,7 +21,19 @@
 
         //Ng-click add 
         $scope.add = function () {
-            //console.log("Testing add!");
+
+            var address = document.getElementsByName("address1")[0].value + document.getElementsByName("address2")[0].value +
+                document.getElementsByName("city")[0].value
+            + document.getElementsByName("state")[0].value ;
+
+            EmployeeService.getLatLong(address)
+                .then(function (response) {
+                    console.log(response.data.results[0].geometry.location.lat);
+                    EmployeeVm.latlong = response.data.results[0].geometry.location;
+                },function (error) {
+                    console.log("Error!");
+                });
+
             var data = {
                 "email": document.getElementsByName("email")[0].value,
                 "firstName": document.getElementsByName("firstName")[0].value,
@@ -32,7 +44,9 @@
                     "city": document.getElementsByName("city")[0].value,
                     "state": document.getElementsByName("state")[0].value,
                     "country": document.getElementsByName("country")[0].value,
-                    "zipCode": document.getElementsByName("zipCode")[0].value
+                    "zipCode": document.getElementsByName("zipCode")[0].value,
+                    "latitude":EmployeeVm.latlong.lat.toString(),
+                    "longitude":EmployeeVm.latlong.lng.toString()
                 }
             };
 

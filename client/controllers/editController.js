@@ -14,6 +14,17 @@
 
 
         $scope.update = function () {
+            var address = document.getElementsByName("address1")[0].value + document.getElementsByName("address2")[0].value +
+                document.getElementsByName("city")[0].value
+                + document.getElementsByName("state")[0].value ;
+
+            EmployeeService.getLatLong(address)
+                .then(function (response) {
+                    console.log(response.data.results[0].geometry.location);
+                    EditVm.latlong = response.data.results[0].geometry.location;
+                },function (error) {
+                    console.log("Error!");
+                });
 
             var data = {
                 "empId": EditVm.currentEmployee.empId,
@@ -27,14 +38,16 @@
                     "city": document.getElementsByName("city")[0].value,
                     "state": document.getElementsByName("state")[0].value,
                     "country": document.getElementsByName("country")[0].value,
-                    "zipCode": document.getElementsByName("zipCode")[0].value
+                    "zipCode": document.getElementsByName("zipCode")[0].value,
+                    "latitude": EditVm.latlong.lat.toString(),
+                    "longitude":EditVm.latlong.lng
                 }
             };
 
             EmployeeService.update(data)
                 .then(function (response) {
                     console.log("Success!");
-                    //window.location.href="#!/employees";
+                    window.location.href = "#!/employees";
                 }, function (error) {
                     console.log(error.toString());
                     console.log("Error!");

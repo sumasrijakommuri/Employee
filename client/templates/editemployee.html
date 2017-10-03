@@ -4,7 +4,7 @@
 
 
     <div align="center">
-        <form  ng-click="update()">
+        <form  ng-submit="update()">
             <h4> Personal Details</h4>
             First Name: <input type="text" class="input-sm" required name="firstName" value={{editVm.currentEmployee.firstName}}><br>
             Last Name: <input type="text" class="input-sm" required name="lastName" value={{editVm.currentEmployee.lastName}}><br>
