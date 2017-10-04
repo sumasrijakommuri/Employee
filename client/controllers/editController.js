@@ -14,7 +14,7 @@
 
 
         $scope.update = function () {
-            var address = document.getElementsByName("address1")[0].value + document.getElementsByName("address2")[0].value +
+            var address = document.getElementsByName("address1")[0].value +
                 document.getElementsByName("city")[0].value
                 + document.getElementsByName("state")[0].value ;
 

@@ -1,40 +1,46 @@
 <div ng-controller="ViewController as viewVm">
 
-<br>
-<br>
-<br>
-    <h4 align="center">Employee Details</h4>
-    <div align="center">
-Name: {{viewVm.currentEmployee.firstName}} {{viewVm.currentEmployee.lastName}} <br>
-        E-mail: {{viewVm.currentEmployee.email}} <br>
-        Address: {{viewVm.currentEmployee.address.streetAddress1}},{{viewVm.currentEmployee.address.streetAddress2}}<br>
-        {{viewVm.currentEmployee.address.city}},{{viewVm.currentEmployee.address.state}}<br>
-        {{viewVm.currentEmployee.address.country}}- {{viewVm.currentEmployee.address.zipCode}}
-    </div>
-<hr>
-    <h4 align="center">Weather Forecast</h4>
-    <div align="center" >
-        <div class="main-center" style="max-width: 80%; height: 400px; margin: 0 auto">
-            <table class="table" >
-
-                <tr>
-                    <th>Date</th>
-                    <th>Day</th>
-                    <th>High</th>
-                    <th>Low</th>
-                    <th>Comments</th>
-                </tr>
-
-                <tr ng-repeat="weather in viewVm.weatherdetails">
-                    <td>{{weather.date}}</td>
-                    <td>{{weather.day}}</td>
-                    <td>{{weather.high}}</td>
-                    <td>{{weather.low}}</td>
-                    <td>{{weather.text}}</td>
-                </tr>
-
-            </table>
+    <br>
+    <br>
+    <br>
+    <h3 align="center">Employee Details</h3>
+    <div class="col-sm-8 col-sm-push-2">
+        <div align="center">
+        <label >Name:</label>
+        <span>{{viewVm.currentEmployee.firstName}} {{viewVm.currentEmployee.lastName}}</span><br>
+        <label>E-mail:</label>
+        <span>{{viewVm.currentEmployee.email}}</span><br>
+        <label>Address:</label>
+        <span>{{viewVm.currentEmployee.address.streetAddress1}},{{viewVm.currentEmployee.address.streetAddress2}}</span>
+        <span>{{viewVm.currentEmployee.address.city}},{{viewVm.currentEmployee.address.state}}</span>
+        <span>{{viewVm.currentEmployee.address.country}}- {{viewVm.currentEmployee.address.zipCode}}</span><br>
         </div>
 
+        <hr>
+        <h3 align="center">Weather Forecast</h3>
+        <div>
+            <div class="main-center" style="max-width: 80%; height: 400px; margin: 0 auto">
+                <table class="table" style="text-align:center;">
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>Comments</th>
+                    </tr>
+
+                    <tr ng-repeat="weather in viewVm.weatherdetails">
+                        <td>{{weather.date}}</td>
+                        <td>{{weather.day}}</td>
+                        <td>{{weather.high}}</td>
+                        <td>{{weather.low}}</td>
+                        <td>{{weather.text}}</td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
     </div>
 </div>

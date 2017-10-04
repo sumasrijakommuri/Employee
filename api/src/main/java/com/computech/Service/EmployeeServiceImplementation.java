@@ -1,5 +1,6 @@
 package com.computech.Service;
 
+import com.computech.Coordinates;
 import com.computech.EmailValidator;
 import com.computech.Entity.Employee;
 import com.computech.Exceptions.BadRequestException;
@@ -75,6 +76,11 @@ public class EmployeeServiceImplementation implements EmployeeService {
     @Transactional
     public Employee findByEmail(String email){
         return repository.finByEmail(email);
+    }
+
+    @Transactional
+    public List<Employee> getNearest(String lat, String lng) {
+        return repository.getNearest(lat,lng);
     }
 
 }

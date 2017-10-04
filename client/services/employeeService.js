@@ -61,16 +61,16 @@
                 }
             };
             return $http(config);
-        };
+        }
         
         
         self.share = function (employee) {
             self.current = employee;
-        };
+        }
 
         self.getShared = function () {
             return self.current;
-        };
+        }
 
         self.update = function (data) {
             var config =  {
@@ -82,7 +82,7 @@
                 }
             };
             return $http(config);
-        };
+        }
 
 
         self.getLatLong = function(address){
@@ -95,5 +95,19 @@
             };
             return $http(config);
         }
+
+
+        self.getNearestEmployees = function (ziplat, ziplng) {
+            var config =  {
+                method: "GET",
+                url:'http://localhost:8080/api/employees/getnearest/'+ziplat+"/"+ziplng,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            };
+            return $http(config);
+        }
+
+
     }
 })();

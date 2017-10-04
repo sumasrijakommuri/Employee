@@ -1,24 +1,33 @@
-
 <div ng-controller="EditController as editVm">
     <br><br><br>
 
 
-    <div align="center">
-        <form  ng-submit="update()">
-            <h4> Personal Details</h4>
-            First Name: <input type="text" class="input-sm" required name="firstName" value={{editVm.currentEmployee.firstName}}><br>
-            Last Name: <input type="text" class="input-sm" required name="lastName" value={{editVm.currentEmployee.lastName}}><br>
-            E-mail: <input type="email"  class="input-sm" required aria-describedby="emailHelp" name="email" value={{editVm.currentEmployee.email}}><br>
-            <h4> Address</h4>
-            Street Address 1: <input type="text" class="input-sm" required  name="address1" value={{editVm.currentEmployee.address.streetAddress1}}><br>
-            Street Address 2: <input type="text" class="input-sm"  name="address2" value={{editVm.currentEmployee.address.streetAddress2}}><br>
-            City: <input type="text" class="input-sm" required name="city" value={{editVm.currentEmployee.address.city}}><br>
-            State: <input type="text" class="input-sm" required name="state" value={{editVm.currentEmployee.address.state}}><br>
-            Country: <input type="text" class="input-sm" required name="country" value={{editVm.currentEmployee.address.country}}><br>
-            Zip Code: <input type="text" class="input-sm" required name="zipCode" value={{editVm.currentEmployee.address.zipCode}}><br><br>
-
-            <button type="submit">Update</button>
-            <button type="reset">Reset</button>
+    <div>
+        <form id="addform" ng-submit="add()" class="col-sm-4 col-sm-push-4">
+            <h3 align="center"> Personal Details</h3>
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" required name="firstName" id="firstName" value={{editVm.currentEmployee.firstName}}><br>
+            <label>Last Name: </label>
+            <input type="text" class="form-control" required name="lastName" value={{editVm.currentEmployee.lastName}}><br>
+            <label>E-mail:</label>
+            <input type="email" class="form-control" required aria-describedby="emailHelp" name="email" value={{editVm.currentEmployee.email}}><br>
+            <h3 align="center"> Address</h3>
+            <label>Street Address 1:</label>
+            <input type="text" class="form-control" required name="address1" value={{editVm.currentEmployee.address.streetAddress1}}><br>
+            <label>Street Address 2: </label>
+            <input type="text" class="form-control" name="address2" value={{editVm.currentEmployee.address.streetAddress2}}><br>
+            <label>City: </label>
+            <input type="text" class="form-control" required name="city" value={{editVm.currentEmployee.address.city}}><br>
+            <label>State:</label>
+            <input type="text" class="form-control" required name="state" value={{editVm.currentEmployee.address.state}}><br>
+            <label>Country: </label>
+            <input type="text" class="form-control" required name="country" value={{editVm.currentEmployee.address.country}}><br>
+            <label>Zip Code: </label>
+            <input type="number" class="form-control" required name="zipCode" value={{editVm.currentEmployee.address.zipCode}}><br><br>
+            <div align="center">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+    <br><br>
         </form>
     </div>
 </div>
